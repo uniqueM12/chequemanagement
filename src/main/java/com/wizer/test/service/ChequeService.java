@@ -33,6 +33,9 @@ public class ChequeService {
 
         User branchManager = userServce.findById(cheque.getBranchManager().getId());
 
+        if (branchManager.getRole().equals("BRANCH_MANAGER")){
+            throw new UnsupportedOperationException("Oh! Cheques can be assigned to only branch managers, but this user is not one of them");
+        }
         cheque = chequeRepository.findOneById(cheque.getId());
         //branchManager.setCheques(Arrays.asList(new
 

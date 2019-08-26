@@ -65,4 +65,15 @@ public class Cheque {
     public void setBranchManager(User branchManager) {
         this.branchManager = branchManager;
     }
+
+    @Override
+    public String toString() {
+        return "Cheque{" +
+                "id=" + id +
+                ", bankName='" + bankName + '\'' +
+                ", prefix='" + prefix + '\'' +
+                ", suffix='" + suffix + '\'' +
+                ", branchManager=" + branchManager +
+                '}';
+    }
 }

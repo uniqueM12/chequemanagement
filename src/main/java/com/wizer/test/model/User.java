@@ -50,7 +50,7 @@ public class User {
         this.username = username;
     }
 
-    //This will never be sent to the front end
+    //Encalpsulate this in the front end
     public String bringPassword() {
         return password;
     }
@@ -81,5 +81,17 @@ public class User {
 
     public void setCheques(List<Cheque> cheques) {
         this.cheques = cheques;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", branch='" + branch + '\'' +
+                ", role='" + role + '\'' +
+                ", cheques=" + cheques +
+                '}';
     }
 }
