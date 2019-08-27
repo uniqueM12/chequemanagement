@@ -1,6 +1,7 @@
 package com.wizer.test.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 
@@ -30,7 +31,8 @@ public class User {
     @Column(nullable = false)
     private String role;
 
-    @JsonIgnore
+    //@JsonIgnore
+    @JsonManagedReference
     @OneToMany(cascade = CascadeType.DETACH, mappedBy = "branchManager")
     private List<Cheque> cheques = new ArrayList<>();
 

@@ -51,6 +51,9 @@ public class ChequeController {
     @PostMapping("/assign")
     public ResponseEntity<Cheque> assign(@RequestBody Cheque cheque){
 
+        System.out.println("Assign");
+        System.out.println(cheque.getId());
+        System.out.println(cheque.getBranchManager().getId());
         logger.debug("Attempting to Assign cheque id:{} to User: {}...", cheque.getId(), cheque.getBranchManager().getId());
 
         Error error = null;

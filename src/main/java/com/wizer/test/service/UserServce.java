@@ -38,7 +38,7 @@ public class UserServce {
 
     public User update(User user){
 
-        System.out.println("now updateting");
+        //System.out.println("now updateting");
         logger.debug("trying to update user with id: {}", user.getId());
         User updatedUser = userRepository.save(user);
         logger.debug("User update for id {} completed: {}", user.getId());

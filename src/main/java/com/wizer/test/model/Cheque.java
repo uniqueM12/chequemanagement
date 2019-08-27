@@ -1,5 +1,8 @@
 package com.wizer.test.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -22,6 +25,8 @@ public class Cheque {
 
     private String suffix;
 
+    //@JsonIgnore
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "branchManager", nullable = true)
     private User branchManager;
