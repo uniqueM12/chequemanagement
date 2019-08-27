@@ -33,7 +33,7 @@ public class ChequeService {
 
         User branchManager = userServce.findById(cheque.getBranchManager().getId());
 
-        if (branchManager.getRole().equals("BRANCH_MANAGER")){
+        if (!branchManager.getRole().equals("BRANCH_MANAGER")){
             throw new UnsupportedOperationException("Oh! Cheques can be assigned to only branch managers, but this user is not one of them");
         }
         cheque = chequeRepository.findOneById(cheque.getId());
@@ -43,6 +43,12 @@ public class ChequeService {
         cheque = chequeRepository.save(cheque);
 
         return cheque;
+    }
+
+    public List<Cheque> findUnassigned(){
+
+        List<Cheque> unassignedCheques = chequeRepository.findByBranchManagerNull();
+        return unassignedCheques;
     }
 
     public List<Cheque> findAll(){

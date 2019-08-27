@@ -70,6 +70,27 @@ public class ChequeController {
             return new ResponseEntity(error, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @GetMapping("/unassigned")
+    public ResponseEntity<Cheque> unassigned(){
+
+        logger.debug("Attempting to retrieve unassigned cheques");
+
+        Error error = null;
+        String errorMessage = "";
+
+        List<Cheque> foundCheques = new ArrayList<>();
+
+        try {
+            foundCheques.addAll(chequeServce.findUnassigned());
+            logger.debug("Cheque retrieval has been completed");
+            return new ResponseEntity(foundCheques, HttpStatus.OK);
+        }catch (Exception e){
+            logger.debug("An error has occurred");
+            errorMessage = e.getMessage();
+            error = new Error(1, errorMessage);
+            return new ResponseEntity(error, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @GetMapping("/cheques")
     public ResponseEntity<List<Cheque>> cheques(){
